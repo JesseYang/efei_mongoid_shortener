@@ -6,7 +6,7 @@ module MongoidShortener
       sl = ShortenedUrl.where(:unique_key => params[:unique_key][1..-1]).first
 
       if sl
-        sl.inc(:use_count, 1)
+        # sl.inc(:use_count, 1)
         # do a 301 redirect to the destination url
         respond_to do |format|
           format.html do

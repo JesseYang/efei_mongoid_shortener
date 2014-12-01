@@ -23,7 +23,7 @@ module MongoidShortener
     validates_presence_of :unique_key
     validates_uniqueness_of :unique_key
 
-    attr_accessible :url
+    # attr_accessible :url
 
     CHARSET = ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a
 
