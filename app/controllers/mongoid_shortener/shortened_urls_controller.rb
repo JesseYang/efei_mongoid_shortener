@@ -10,11 +10,17 @@ module MongoidShortener
         # do a 301 redirect to the destination url
         respond_to do |format|
           format.html do
-            head :moved_permanently, :location => sl.url and return
+            # head :moved_permanently, :location => sl.url and return
+            ids = sl.url.split("/")[-1].split(',')
+            hid = ids[0]
+            qid = ids[1]
+            redirect_to "/student/questions/#{qid}?hid=#{hid}" and return
           end
           format.json do
-            qid = sl.url.split("/")[-1]
-            render json: { success: true, question_id: qid } and return
+            ids = sl.url.split("/")[-1].split(',')
+            hid = ids[0]
+            qid = ids[1]
+            render json: { success: true, homework_id: hid, question_id: qid } and return
           end
         end
       else
